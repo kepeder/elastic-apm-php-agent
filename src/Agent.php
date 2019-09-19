@@ -96,12 +96,30 @@ class Agent
         $this->config = new Config($config);
 
         // Use the custom event factory or create a default one
-        $this->eventFactory = $eventFactory ?? new DefaultEventFactory();
+        if (!$eventFactory) {
+            $eventFactory = new DefaultEventFactory();
+        }
+        $this->eventFactory = $eventFactory;
 
         // Init the Shared Context
-        $this->sharedContext['user']   = $sharedContext['user'] ?? [];
-        $this->sharedContext['custom'] = $sharedContext['custom'] ?? [];
-        $this->sharedContext['tags']   = $sharedContext['tags'] ?? [];
+        if (isset($sharedContext['user'])) {
+            $this->sharedContext['user'] = $sharedContext['user'];
+        } else {
+            $this->sharedContext['user'] = [];
+        }
+
+        if (isset($sharedContext['custom'])) {
+            $this->sharedContext['custom'] = $sharedContext['custom'];
+        } else {
+            $this->sharedContext['custom'] = [];
+        }
+
+        if (isset($sharedContext['tags'])) {
+            $this->sharedContext['tags'] = $sharedContext['tags'];
+        } else {
+            $this->sharedContext['tags'] = [];
+        }
+
 
         // Let's misuse the context to pass the environment variable and cookies
         // config to the EventBeans and the getContext method
@@ -111,7 +129,10 @@ class Agent
         $this->sharedContext['cookies'] = $this->config->get('cookies', []);
 
         // Initialize Event Stores
-        $this->transactionsStore = $transactionsStore ?? new TransactionsStore();
+        if (!$transactionsStore) {
+            $transactionsStore = new TransactionsStore();
+        }
+        $this->transactionsStore = $transactionsStore;
 
         // Init the Transport "Layer"
         $this->connector = new Connector($this->config);
@@ -127,7 +148,7 @@ class Agent
      *
      * @return EventFactoryInterface
      */
-    public function factory() : EventFactoryInterface
+    public function factory()
     {
         return $this->eventFactory;
     }
@@ -139,7 +160,7 @@ class Agent
      *
      * @return Response
      */
-    public function info() : \GuzzleHttp\Psr7\Response
+    public function info()
     {
         return $this->connector->getInfo();
     }
@@ -154,7 +175,7 @@ class Agent
      *
      * @return Transaction
      */
-    public function startTransaction(string $name, array $context = [], float $start = null): Transaction
+    public function startTransaction($name, $context = [], $start = null)
     {
         // Create and Store Transaction
         $this->transactionsStore->register(
@@ -218,7 +239,7 @@ class Agent
      *
      * @return void
      */
-    public function captureThrowable(\Throwable $thrown, array $context = [], ?Transaction $parent = null)
+    public function captureThrowable(\Throwable $thrown, array $context = [], $parent = null)
     {
         $this->putEvent($this->factory()->newError($thrown, array_replace_recursive($this->sharedContext, $context), $parent));
     }
@@ -236,7 +257,7 @@ class Agent
      *
      * @return \PhilKra\Helper\Config
      */
-    public function getConfig() : \PhilKra\Helper\Config
+    public function getConfig()
     {
         return $this->config;
     }
@@ -249,7 +270,7 @@ class Agent
      *
      * @return bool
      */
-    public function send() : bool
+    public function send()
     {
         // Is the Agent enabled ?
         if ($this->config->get('active') === false) {
@@ -264,7 +285,7 @@ class Agent
         }
 
         // Start Payload commitment
-        foreach($this->transactionsStore->list() as $event) {
+        foreach($this->transactionsStore->theList() as $event) {
             $this->connector->putEvent($event);
         }
         $this->transactionsStore->reset();

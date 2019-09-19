@@ -43,7 +43,7 @@ class TransactionsStore extends Store
      */
     public function fetch(string $name)
     {
-        return $this->store[$name] ?? null;
+        return isset($this->store[$name]) ? $this->store[$name] :  null;
     }
 
     /**
@@ -51,7 +51,7 @@ class TransactionsStore extends Store
      *
      * @return array
      */
-    public function jsonSerialize() : array
+    public function jsonSerialize()
     {
         return array_values($this->store);
     }

@@ -45,7 +45,7 @@ class Connector
      *
      * @return bool
      */
-    public function isPayloadSet() : bool
+    public function isPayloadSet()
     {
         return (empty($this->payload) === false);
     }
@@ -61,7 +61,10 @@ class Connector
             'timeout' => $this->config->get('timeout'),
         ];
 
-        $httpClientConfig = $this->config->get('httpClient') ?? [];
+        $httpClientConfig = [];
+        if ($this->config->get('httpClient')) {
+            $httpClientConfig = $this->config->get('httpClient');
+        }
 
         $this->client = new Client(array_merge($httpClientDefaults, $httpClientConfig));
     }
@@ -79,7 +82,7 @@ class Connector
      *
      * @return bool
      */
-    public function commit() : bool
+    public function commit()
     {
         $body = '';
         foreach($this->payload as $line) {
@@ -100,7 +103,7 @@ class Connector
      *
      * @return Response
      */
-    public function getInfo() : \GuzzleHttp\Psr7\Response
+    public function getInfo()
     {
         return $this->client->get(
             $this->config->get('serverUrl'),
@@ -115,7 +118,7 @@ class Connector
      *
      * @return string
      */
-    private function getEndpoint() : string
+    private function getEndpoint()
     {
         return sprintf('%s/intake/v2/events', $this->config->get('serverUrl'));
     }
@@ -125,7 +128,7 @@ class Connector
      *
      * @return array
      */
-    private function getRequestHeaders() : array
+    private function getRequestHeaders()
     {
         // Default Headers Set
         $headers = [

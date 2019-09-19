@@ -81,7 +81,7 @@ class Span extends TraceableEvent implements \JsonSerializable
     public function stop(int $duration = null)
     {
         $this->timer->stop();
-        $this->duration = $duration ?? round($this->timer->getDurationInMilliseconds(), 3);
+        $this->duration = ($duration) ? $duration : round($this->timer->getDurationInMilliseconds(), 3);
     }
 
     /**
@@ -89,7 +89,7 @@ class Span extends TraceableEvent implements \JsonSerializable
     *
     * @return string
     */
-    public function getName() : string
+    public function getName()
     {
         return $this->name;
     }
@@ -145,7 +145,7 @@ class Span extends TraceableEvent implements \JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize() : array
+    public function jsonSerialize()
     {
         return [
             'span' => [

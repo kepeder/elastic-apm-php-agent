@@ -41,7 +41,10 @@ class Config
      */
     public function get(string $key, $default = null)
     {
-        return ($this->config[$key]) ?? $default;
+        if (!isset($this->config[$key])) {
+            return $default;
+        }
+        return $this->config[$key];
     }
 
     /**
@@ -49,7 +52,7 @@ class Config
      *
      * @return array
      */
-    public function asArray() : array
+    public function asArray()
     {
         return $this->config;
     }
@@ -61,7 +64,7 @@ class Config
      *
      * @return array
      */
-    private function getDefaultConfig() : array
+    private function getDefaultConfig()
     {
         return [
             'serverUrl'      => 'http://127.0.0.1:8200',

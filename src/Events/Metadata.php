@@ -35,7 +35,7 @@ class Metadata extends EventBean implements \JsonSerializable
      *
      * @return array
      */
-    final public function jsonSerialize(): array
+    final public function jsonSerialize()
     {
         return [
             'metadata' => [
@@ -43,8 +43,8 @@ class Metadata extends EventBean implements \JsonSerializable
                     'name'    => $this->config->get('appName'),
                     'version' => $this->config->get('appVersion'),
                     'framework' => [
-                        'name' => $this->config->get('framework') ?? '',
-                        'version' => $this->config->get('frameworkVersion') ?? '',
+                        'name' => ($this->config->get('framework')) ? $this->config->get('framework') : '',
+                        'version' => ($this->config->get('frameworkVersion')) ? $this->config->get('frameworkVersion') :  '',
                     ],
                     'language' => [
                         'name'    => 'php',
