@@ -1,8 +1,8 @@
 <?php
 
-namespace PhilKra\Events;
+namespace Kepeder\Events;
 
-use PhilKra\Helper\Timer;
+use Kepeder\Helper\Timer;
 
 /**
  *
@@ -21,7 +21,7 @@ class Transaction extends TraceableEvent implements \JsonSerializable
     private $name;
 
     /**
-     * @var \PhilKra\Helper\Timer
+     * @var \Kepeder\Helper\Timer
      */
     private $timer;
 
@@ -118,7 +118,7 @@ class Transaction extends TraceableEvent implements \JsonSerializable
      * Set the Max Depth/Limit of the debug_backtrace method
      *
      * @link http://php.net/manual/en/function.debug-backtrace.php
-     * @link https://github.com/philkra/elastic-apm-php-agent/issues/55
+     * @link https://github.com/Kepeder/elastic-apm-php-agent/issues/55
      *
      * @param int $limit
      */

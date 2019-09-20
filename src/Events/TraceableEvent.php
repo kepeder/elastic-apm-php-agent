@@ -1,9 +1,9 @@
 <?php
 
-namespace PhilKra\Events;
+namespace Kepeder\Events;
 
-use PhilKra\Exception\InvalidTraceContextHeaderException;
-use PhilKra\Helper\DistributedTracing;
+use Kepeder\Exception\InvalidTraceContextHeaderException;
+use Kepeder\Helper\DistributedTracing;
 
 /**
  *

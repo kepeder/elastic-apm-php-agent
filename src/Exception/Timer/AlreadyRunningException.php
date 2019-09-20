@@ -1,5 +1,5 @@
 <?php
-namespace PhilKra\Exception\Timer;
+namespace Kepeder\Exception\Timer;
 
 /**
  * Trying to stop a Timer that is already running

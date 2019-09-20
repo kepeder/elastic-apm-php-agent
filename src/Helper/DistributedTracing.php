@@ -1,8 +1,8 @@
 <?php
 
-namespace PhilKra\Helper;
+namespace Kepeder\Helper;
 
-use PhilKra\Exception\InvalidTraceContextHeaderException;
+use Kepeder\Exception\InvalidTraceContextHeaderException;
 
 class DistributedTracing
 {

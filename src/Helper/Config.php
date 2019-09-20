@@ -1,8 +1,8 @@
 <?php
 
-namespace PhilKra\Helper;
+namespace Kepeder\Helper;
 
-use PhilKra\Exception\MissingAppNameException;
+use Kepeder\Exception\MissingAppNameException;
 
 /**
  *
@@ -60,7 +60,7 @@ class Config
     /**
      * Get the Default Config of the Agent
      *
-     * @link https://github.com/philkra/elastic-apm-php-agent/issues/55
+     * @link https://github.com/Kepeder/elastic-apm-php-agent/issues/55
      *
      * @return array
      */

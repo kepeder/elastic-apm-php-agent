@@ -1,6 +1,6 @@
 <?php
 
-namespace PhilKra\Events;
+namespace Kepeder\Events;
 
 final class DefaultEventFactory implements EventFactoryInterface
 {

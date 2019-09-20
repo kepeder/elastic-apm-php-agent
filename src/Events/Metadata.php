@@ -1,9 +1,9 @@
 <?php
 
-namespace PhilKra\Events;
+namespace Kepeder\Events;
 
-use PhilKra\Agent;
-use PhilKra\Helper\Config;
+use Kepeder\Agent;
+use Kepeder\Helper\Config;
 
 /**
  *

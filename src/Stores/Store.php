@@ -1,8 +1,8 @@
 <?php
 
-namespace PhilKra\Stores;
+namespace Kepeder\Stores;
 
-use PhilKra\Events\EventBean;
+use Kepeder\Events\EventBean;
 
 /**
  *
@@ -14,14 +14,14 @@ class Store implements \JsonSerializable
     /**
      * Set of Events
      *
-     * @var array of \PhilKra\Events\EventBean
+     * @var array of \Kepeder\Events\EventBean
      */
     protected $store = [];
 
     /**
      * Get all Registered Errors
      *
-     * @return array of \PhilKra\Events\EventBean
+     * @return array of \Kepeder\Events\EventBean
      */
     public function theList()
     {

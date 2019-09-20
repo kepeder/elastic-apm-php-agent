@@ -1,19 +1,19 @@
 <?php
-namespace PhilKra\Tests\Events;
+namespace Kepeder\Tests\Events;
 
-use \PhilKra\Events\Transaction;
-use PhilKra\Tests\TestCase;
+use \Kepeder\Events\Transaction;
+use Kepeder\Tests\TestCase;
 
 /**
- * Test Case for @see \PhilKra\Events\Transaction
+ * Test Case for @see \Kepeder\Events\Transaction
  */
 final class TransactionTest extends TestCase {
 
     /**
-     * @covers \PhilKra\Events\EventBean::getId
-     * @covers \PhilKra\Events\EventBean::getTraceId
-     * @covers \PhilKra\Events\Transaction::getTransactionName
-     * @covers \PhilKra\Events\Transaction::setTransactionName
+     * @covers \Kepeder\Events\EventBean::getId
+     * @covers \Kepeder\Events\EventBean::getTraceId
+     * @covers \Kepeder\Events\Transaction::getTransactionName
+     * @covers \Kepeder\Events\Transaction::setTransactionName
      */
     public function testParentConstructor() {
         $name = 'testerus-grandes';
@@ -31,9 +31,9 @@ final class TransactionTest extends TestCase {
     /**
      * @depends testParentConstructor
      *
-     * @covers \PhilKra\Events\EventBean::setParent
-     * @covers \PhilKra\Events\EventBean::getTraceId
-     * @covers \PhilKra\Events\EventBean::ensureGetTraceId
+     * @covers \Kepeder\Events\EventBean::setParent
+     * @covers \Kepeder\Events\EventBean::getTraceId
+     * @covers \Kepeder\Events\EventBean::ensureGetTraceId
      */
     public function testParentReference() {
         $parent = new Transaction('parent', []);

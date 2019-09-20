@@ -1,19 +1,19 @@
 <?php
 
-namespace PhilKra;
+namespace Kepeder;
 
-use PhilKra\Events\DefaultEventFactory;
-use PhilKra\Events\EventFactoryInterface;
-use PhilKra\Stores\TransactionsStore;
-use PhilKra\Events\EventBean;
-use PhilKra\Events\Error;
-use PhilKra\Events\Transaction;
-use PhilKra\Events\Metadata;
-use PhilKra\Helper\Timer;
-use PhilKra\Helper\Config;
-use PhilKra\Middleware\Connector;
-use PhilKra\Exception\Transaction\DuplicateTransactionNameException;
-use PhilKra\Exception\Transaction\UnknownTransactionException;
+use Kepeder\Events\DefaultEventFactory;
+use Kepeder\Events\EventFactoryInterface;
+use Kepeder\Stores\TransactionsStore;
+use Kepeder\Events\EventBean;
+use Kepeder\Events\Error;
+use Kepeder\Events\Transaction;
+use Kepeder\Events\Metadata;
+use Kepeder\Helper\Timer;
+use Kepeder\Helper\Config;
+use Kepeder\Middleware\Connector;
+use Kepeder\Exception\Transaction\DuplicateTransactionNameException;
+use Kepeder\Exception\Transaction\UnknownTransactionException;
 
 /**
  *
@@ -30,33 +30,33 @@ class Agent
      *
      * @var string
      */
-    const VERSION = '7.0.0-rc2';
+    const VERSION = '0.0.1';
 
     /**
      * Agent Name
      *
      * @var string
      */
-    const NAME = 'elasticapm-php';
+    const NAME = 'elastic-apm-php-agent';
 
     /**
      * Config Store
      *
-     * @var \PhilKra\Helper\Config
+     * @var \Kepeder\Helper\Config
      */
     private $config;
 
     /**
      * Transactions Store
      *
-     * @var \PhilKra\Stores\TransactionsStore
+     * @var \Kepeder\Stores\TransactionsStore
      */
     private $transactionsStore;
 
     /**
      * Apm Timer
      *
-     * @var \PhilKra\Helper\Timer
+     * @var \Kepeder\Helper\Timer
      */
     private $timer;
 
@@ -123,8 +123,8 @@ class Agent
 
         // Let's misuse the context to pass the environment variable and cookies
         // config to the EventBeans and the getContext method
-        // @see https://github.com/philkra/elastic-apm-php-agent/issues/27
-        // @see https://github.com/philkra/elastic-apm-php-agent/issues/30
+        // @see https://github.com/Kepeder/elastic-apm-php-agent/issues/27
+        // @see https://github.com/Kepeder/elastic-apm-php-agent/issues/30
         $this->sharedContext['env'] = $this->config->get('env', []);
         $this->sharedContext['cookies'] = $this->config->get('cookies', []);
 
@@ -168,7 +168,7 @@ class Agent
     /**
      * Start the Transaction capturing
      *
-     * @throws \PhilKra\Exception\Transaction\DuplicateTransactionNameException
+     * @throws \Kepeder\Exception\Transaction\DuplicateTransactionNameException
      *
      * @param string $name
      * @param array  $context
@@ -195,7 +195,7 @@ class Agent
     /**
      * Stop the Transaction
      *
-     * @throws \PhilKra\Exception\Transaction\UnknownTransactionException
+     * @throws \Kepeder\Exception\Transaction\UnknownTransactionException
      *
      * @param string $name
      * @param array $meta, Def: []
@@ -212,7 +212,7 @@ class Agent
     /**
      * Get a Transaction
      *
-     * @throws \PhilKra\Exception\Transaction\UnknownTransactionException
+     * @throws \Kepeder\Exception\Transaction\UnknownTransactionException
      *
      * @param string $name
      *
@@ -255,7 +255,7 @@ class Agent
     /**
      * Get the Agent Config
      *
-     * @return \PhilKra\Helper\Config
+     * @return \Kepeder\Helper\Config
      */
     public function getConfig()
     {
@@ -265,8 +265,8 @@ class Agent
     /**
      * Send Data to APM Service
      *
-     * @link https://github.com/philkra/elastic-apm-laravel/issues/22
-     * @link https://github.com/philkra/elastic-apm-laravel/issues/26
+     * @link https://github.com/Kepeder/elastic-apm-laravel/issues/22
+     * @link https://github.com/Kepeder/elastic-apm-laravel/issues/26
      *
      * @return bool
      */

@@ -1,8 +1,8 @@
 <?php
 
-namespace PhilKra\Events;
+namespace Kepeder\Events;
 
-use PhilKra\Helper\Timer;
+use Kepeder\Helper\Timer;
 
 /**
  *
@@ -20,7 +20,7 @@ class Span extends TraceableEvent implements \JsonSerializable
     private $name;
 
     /**
-     * @var \PhilKra\Helper\Timer
+     * @var \Kepeder\Helper\Timer
      */
     private $timer;
 

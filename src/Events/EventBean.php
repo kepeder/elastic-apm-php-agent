@@ -1,6 +1,6 @@
 <?php
 
-namespace PhilKra\Events;
+namespace Kepeder\Events;
 
 /**
  *
@@ -78,7 +78,7 @@ class EventBean
     /**
      * Init the Event with the Timestamp and UUID
      *
-     * @link https://github.com/philkra/elastic-apm-php-agent/issues/3
+     * @link https://github.com/Kepeder/elastic-apm-php-agent/issues/3
      *
      * @param array $contexts
      * @param ?Transaction $parent
@@ -355,8 +355,8 @@ class EventBean
      * Get the Environment Variables
      *
      * @link http://php.net/manual/en/reserved.variables.server.php
-     * @link https://github.com/philkra/elastic-apm-php-agent/issues/27
-     * @link https://github.com/philkra/elastic-apm-php-agent/issues/54
+     * @link https://github.com/Kepeder/elastic-apm-php-agent/issues/27
+     * @link https://github.com/Kepeder/elastic-apm-php-agent/issues/54
      *
      * @return array
      */
@@ -373,8 +373,8 @@ class EventBean
     /**
      * Get the cookies
      *
-     * @link https://github.com/philkra/elastic-apm-php-agent/issues/30
-     * @link https://github.com/philkra/elastic-apm-php-agent/issues/54
+     * @link https://github.com/Kepeder/elastic-apm-php-agent/issues/30
+     * @link https://github.com/Kepeder/elastic-apm-php-agent/issues/54
      *
      * @return array
      */
@@ -394,7 +394,7 @@ class EventBean
     /**
      * Get the cookie header
      *
-     * @link https://github.com/philkra/elastic-apm-php-agent/issues/30
+     * @link https://github.com/Kepeder/elastic-apm-php-agent/issues/30
      *
      * @return string
      */
