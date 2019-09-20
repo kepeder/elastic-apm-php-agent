@@ -14,7 +14,7 @@
     },
     "autoload" : {
         "psr-4" : {
-            "PhilKra\\": "src/"
+            "Kepeder\\": "src/"
         }
     },
     "config" : {
